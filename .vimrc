@@ -47,7 +47,6 @@ set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.psd,*.o,*.obj,*.min.js
 set wildignore+=*/bower_components/*,*/node_modules/*
 
-filetype plugin indent on
 set autoindent
 
 " Display extra whitespace
@@ -59,6 +58,13 @@ set shiftwidth=2
 set expandtab
 set smarttab
 
+" Cursor Stuff
+highlight Cursor guifg=white guibg=black
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=n-v-c:blinkon0
+set guicursor+=i:blinkwait10
 
 " Strip trailing whitespace
 fun! StripTrailingWhitespace()
@@ -102,6 +108,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'slim'] }
+let g:syntastic_javascript_checkers = ['jscs']
 
 nmap <A-up> :lprev<cr>
 nmap <A-down> :lnext<cr>
