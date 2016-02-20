@@ -28,3 +28,36 @@ export SCM_CHECK=true
 
 # Load Bash It
 source $BASH_IT/bash_it.sh
+
+
+### Android dev tools
+export ANDROID_HOME="/Users/davidmoody/Library/Android/sdk"
+export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PATH"
+
+
+# digital ocean and juju
+export DO_CLIENT_ID="5c99171c805897cc4f834445ce274dcb"
+export DO_API_KEY="ad5c51506837601f9d46528137d8bc10"
+export JSTESTDRIVER_HOME=~/Documents/jsTestDriver
+
+
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias docker='docker --tlsverify=false'
+alias mvim="/Applications/MacVim.app/contents/MacOS/MacVim"
+
+# project locations
+alias bfg='cd ~/Projects/timmons/bfg-master'
+
+# important files
+alias vm='~/.vimrc'
+alias tm='~/.tmux.conf'
+
+
+
+# dot net stuff<F3
+source dnvm.sh
+
+export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/davidmoody/.dnx/runtimes/dnx-mono.1.0.0-beta6/bin:/Users/davidmoody/Library/Android/sdk/tools:/Users/davidmoody/Library/Android/sdk/platform-tools:/Users/davidmoody/.rvm/gems/ruby-2.2.1/bin:/Users/davidmoody/.rvm/gems/ruby-2.2.1@global/bin:/Users/davidmoody/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/davidmoody/.rvm/bin:/Users/davidmoody/.gem/ruby/1.8/bin:/opt/nginx/sbin:/usr/local/mysql/bin
+
+

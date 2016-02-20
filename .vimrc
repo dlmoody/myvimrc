@@ -24,6 +24,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'othree/html5.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'dkprice/vim-easygrep'
 
 call vundle#end()
 filetype plugin indent on
@@ -108,7 +109,9 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'slim'] }
-let g:syntastic_javascript_checkers = ['jscs']
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 nmap <A-up> :lprev<cr>
 nmap <A-down> :lnext<cr>
