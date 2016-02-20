@@ -24,7 +24,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'othree/html5.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'dkprice/vim-easygrep'
+Plugin 'tpope/vim-unimpaired'
 
 call vundle#end()
 filetype plugin indent on
@@ -46,7 +46,7 @@ set incsearch
 set wildmenu
 set wildignore+=.DS_Store
 set wildignore+=*.jpg,*.jpeg,*.gif,*.png,*.psd,*.o,*.obj,*.min.js
-set wildignore+=*/bower_components/*,*/node_modules/*
+set wildignore+=bower_components/**,node_modules/**,build/**
 
 set autoindent
 
@@ -99,10 +99,20 @@ nmap <F7> :cn<cr>
 nmap <F11> gg=G<C-o>
 
 nmap <C-n> :NERDTreeToggle<CR>
+let NERDTreeIgnore=['node_modules$[[dir]]', 'build$[[dir]]', 'dest$[[dir]]',  '\~$']
+
+" cntrlp
+let g:ctrlp_user_command = {
+  \ 'types': {
+    \ 1: ['.git', 'cd %s && git ls-files --cached --exclude-standard --others'],
+    \ 2: ['.hg', 'hg --cwd %s locate -I .'],
+    \ },
+  \ 'fallback': 'find %s -type f'
+  \ }
 
 
 " syntastic
-let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 0
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list = 1
@@ -110,8 +120,6 @@ let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'slim'] }
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 nmap <A-up> :lprev<cr>
 nmap <A-down> :lnext<cr>
