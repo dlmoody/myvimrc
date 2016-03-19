@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'Align'
 Plugin 'pangloss/vim-javascript'
-Plugin 'msanders/snipmate.vim'
+Plugin 'mxw/vim-jsx'
 Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kchmck/vim-coffee-script'
@@ -25,6 +25,17 @@ Plugin 'othree/html5.vim'
 Plugin 'junegunn/goyo.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'MarcWeber/vim-addon-local-vimrc'
+Plugin 'tmux-plugins/vim-tmux-focus-events'
+Plugin 'tmux-plugins/vim-tmux'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'Raimondi/delimitMate'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'ervandew/supertab'
 
 call vundle#end()
 filetype plugin indent on
@@ -38,9 +49,16 @@ set vb t_vb=
 
 set mouse=a
 
+" set backspace to work as intended
+set backspace=indent,eol,start
+
 " Style
-colorscheme distinguished
+colorscheme mango
+" Line number stuff
 set number
+set relativenumber
+
+
 syntax on
 set incsearch
 set wildmenu
@@ -96,7 +114,23 @@ nmap <F6> :cp<cr>
 " quicklist next
 nmap <F7> :cn<cr>
 " Format all
-nmap <F11> gg=G<C-o>
+nmap <F5> gg=G<C-o>
+
+" opening dot files
+nnoremap <leader>av :tabnew $MY_VIMRC<CR>
+nnoremap <leader>at :tabnew $MY_MUXCONF<CR>
+
+" maps for tabs
+nnoremap tn :tabnew<Space>
+
+nnoremap tk :tabnext<CR>
+nnoremap tj :tabprev<CR>
+
+nnoremap th :tabfirst<CR>
+nnoremap tl :tablast<CR>
+
+
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files
 
 nmap <C-n> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['node_modules$[[dir]]', 'build$[[dir]]', 'dest$[[dir]]',  '\~$']
@@ -111,6 +145,17 @@ let g:ctrlp_user_command = {
   \ }
 
 
+set foldmethod=syntax
+set foldlevelstart=1
+
+let javaScript_fold=1
+" JavaScript
+
+" vim-javascript
+let b:javascript_fold = 0
+
+let g:used_javascript_libs = 'react'
+
 " syntastic
 let g:syntastic_check_on_open = 0
 let g:syntastic_error_symbol = '✗'
@@ -119,7 +164,11 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_loc_list_height = 5
 let g:syntastic_enable_highlighting = 0
 let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'slim'] }
+let g:syntastic_javascript_checkers = ['eslint']
 
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 nmap <A-up> :lprev<cr>
 nmap <A-down> :lnext<cr>

@@ -50,14 +50,17 @@ alias mvim="/Applications/MacVim.app/contents/MacOS/MacVim"
 alias bfg='cd ~/Projects/timmons/bfg-master'
 
 # important files
-alias vm='~/.vimrc'
-alias tm='~/.tmux.conf'
+export MY_VIMRC="~/.vimrc"
+export MY_MUXCONF="~/.tmux.conf"
 
 
-
-# dot net stuff<F3
+# dot net stuff
 source dnvm.sh
 
 export PATH=/Applications/Postgres.app/Contents/Versions/9.4/bin:/Users/davidmoody/.dnx/runtimes/dnx-mono.1.0.0-beta6/bin:/Users/davidmoody/Library/Android/sdk/tools:/Users/davidmoody/Library/Android/sdk/platform-tools:/Users/davidmoody/.rvm/gems/ruby-2.2.1/bin:/Users/davidmoody/.rvm/gems/ruby-2.2.1@global/bin:/Users/davidmoody/.rvm/rubies/ruby-2.2.1/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/davidmoody/.rvm/bin:/Users/davidmoody/.gem/ruby/1.8/bin:/opt/nginx/sbin:/usr/local/mysql/bin
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+  . $(brew --prefix)/etc/bash_completion
+fi
 
 
